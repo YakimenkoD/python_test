@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 
-b_day = date(2018, 6, 4) 
-i_day = date(2020, 3, 13)
+b_day = date(1996, 2, 29) 
+i_day = date(2010, 3, 13)
 
 
 
@@ -12,11 +12,7 @@ def passport_validation(birth,issued):
 			first_day_valid = birth.replace(year=birth.year + 14)
 		except ValueError:
 			first_day_valid = birth.replace(year=birth.year + 14, month=birth.month+1, day=1)
-		
-		try:
-			last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+1)
-		except ValueError:
-			last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+1,day=1)
+		last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+1)
 
 		return first_day_valid<=issued<=last_day_valid if date.today()>=issued else False
 
@@ -25,12 +21,8 @@ def passport_validation(birth,issued):
 			first_day_valid = birth.replace(year=birth.year + 20)
 		except ValueError:
 			first_day_valid = birth.replace(year=birth.year + 20, month=birth.month+1, day=1)
-		
-		try:
-			last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+1)
-		except ValueError:
-			last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+1, day=1)
 
+		last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+1)
 		return first_day_valid <= issued <= last_day_valid if date.today()>=issued else False
 	
 	elif age >=45:
