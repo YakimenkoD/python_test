@@ -1,7 +1,7 @@
 from datetime import date
 
-b_day = date(2000, 2, 29)
-i_day = date(2014, 3, 13)
+b_day = date(1996, 2, 29)
+i_day = date(2020, 3, 13)
 
 def calculate_age(born):
     today = date.today()
@@ -26,7 +26,7 @@ def passport_validation(birth,issued):
 		try:
 			last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+1)
 		except ValueError:
-			last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+2,day=1)
+			last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+1,day=1)
 
 		return print(first_day_valid<=issued<=last_day_valid)
 
@@ -39,7 +39,9 @@ def passport_validation(birth,issued):
 		try:
 			last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+1)
 		except ValueError:
-			last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+2,day=1)
+			last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+1, day=1)
+
+		return print(first_day_valid <= issued <= last_day_valid)
 	
 	elif age >=45:
 		try:
