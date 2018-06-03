@@ -18,7 +18,7 @@ def passport_validation(birth,issued):
 		except ValueError:
 			last_day_valid  = birth.replace(year=birth.year + 20, month= birth.month+1,day=1)
 
-		return first_day_valid<=issued<=last_day_valid
+		return first_day_valid<=issued<=last_day_valid if date.today()>=issued else False
 
 	elif age in range(20,46):
 		try:
@@ -31,7 +31,7 @@ def passport_validation(birth,issued):
 		except ValueError:
 			last_day_valid  = birth.replace(year=birth.year + 45, month= birth.month+1, day=1)
 
-		return first_day_valid <= issued <= last_day_valid
+		return first_day_valid <= issued <= last_day_valid if date.today()>=issued else False
 	
 	elif age >=45:
 		try:
@@ -39,7 +39,7 @@ def passport_validation(birth,issued):
 		except ValueError:
 			first_day_valid = birth.replace(year=birth.year + 45, month=birth.month+1, day=1)
 
-		return first_day_valid<=issued
+		return first_day_valid<=issued if date.today()>=issued else False
 
 	else:
 		return False
