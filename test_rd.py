@@ -9,14 +9,17 @@ def passport_validation(birth,issued):
 	if age in range(14,21):
 		first_day_valid = birth + relativedelta(years=14)
 		last_day_valid = birth + relativedelta(years=20, months=1)
-		return (first_day_valid<=issued<=last_day_valid) if date.today()>=issued else False
+		result = (first_day_valid<=issued<=last_day_valid) 
+
 	elif age in range(20,46):
 		first_day_valid = birth + relativedelta(years=20)
 		last_day_valid = birth + relativedelta(years=45, months=1)
-		return (first_day_valid<=issued<=last_day_valid) if date.today()>=issued else False
+		result = (first_day_valid<=issued<=last_day_valid)
+
 	elif age >=45:
 		first_day_valid = birth + relativedelta(years=20)
-		return (first_day_valid<=issued) if date.today()>=issued else False
+		result = (first_day_valid<=issued) 
 
+	return result if date.today()>=issued else False
 
 print(passport_validation(b_day,i_day))
