@@ -1,22 +1,12 @@
-from datetime import date
+from datetime import date, timedelta
 
-b_day = date(1996, 2, 29)
+b_day = date(2018, 6, 4) 
 i_day = date(2020, 3, 13)
 
-def calculate_age(born):
-    today = date.today()
-    try: 
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, month=born.month+1, day=1)
-    if birthday > today:
-        return today.year - born.year - 1
-    else:
-        return today.year - born.year
+
 
 def passport_validation(birth,issued):
-	age = calculate_age(b_day)
-
+	age = (date.today() - birth) // timedelta(days=365.2425)
 	if age in range(14,21):
 		try:
 			first_day_valid = birth.replace(year=birth.year + 14)
@@ -57,4 +47,13 @@ def passport_validation(birth,issued):
 passport_validation(b_day,i_day)
 
 
-	
+'''def calculate_age(born):
+    today = date.today()
+    try: 
+        birthday = born.replace(year=today.year)
+    except ValueError:
+        birthday = born.replace(year=today.year, month=born.month+1, day=1)
+    if birthday > today:
+        return today.year - born.year - 1
+    else:
+        return today.year - born.year'''
